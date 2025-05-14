@@ -7,10 +7,12 @@
     "dev": "vite --port 3000",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server.js"
   },
   "dependencies": {
     "aos": "^2.3.4",
+    "express": "^4.18.2",
     "framer-motion": "^12.11.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

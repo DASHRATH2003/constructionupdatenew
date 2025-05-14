@@ -3,9 +3,11 @@ services:
     name: construction-website
     env: node
     buildCommand: npm install && npm run build
-    startCommand: npm start
+    startCommand: node server.js
     envVars:
       - key: NODE_VERSION
         value: 18.x
       - key: NODE_ENV
         value: production
+      - key: PORT
+        value: 10000

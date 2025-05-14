@@ -12,13 +12,35 @@ const PORT = process.env.PORT || 3000;
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// For any request that doesn't match a static file, serve index.html
-app.get('*', (req, res) => {
+// Define specific routes for the SPA
+const routes = ['/', '/about', '/services', '/projects', '/testimonials', '/contact'];
+
+// Handle specific routes
+routes.forEach(route => {
+  app.get(route, (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  });
+});
+
+// Fallback route for any other request
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 // Start the server
-app.listen(PORT, '0.0.0.0', () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on http://0.0.0.0:${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV}`);
+  console.log(`Port used: ${PORT}`);
+});
+
+// Handle server errors
+server.on('error', (error) => {
+  if (error.code === 'EADDRINUSE') {
+    console.error(`Port ${PORT} is already in use. Please use a different port.`);
+  } else {
+    console.error('Server error:', error);
+  }
+  process.exit(1);
 });
 

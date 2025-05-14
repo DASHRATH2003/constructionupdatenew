@@ -1,0 +1,288 @@
+.navbar {
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(5px);
+}
+
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.9);
+  height: 70px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 30px;
+}
+
+
+.navbar-logo {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 40px;
+  margin-right: 12px;
+  background-color: white;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled .logo-image {
+  height: 35px;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.company-tagline {
+  font-size: 0.65rem;
+  color: #0A3A5E;
+  background-color: white;
+  padding: 2px 5px;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  height: 90px;
+  padding: 0 15px;
+  position: relative;
+  transition: height 0.4s ease;
+}
+
+.navbar.scrolled .nav-item {
+  height: 70px;
+}
+
+.nav-links {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: 100%;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.nav-links::after {
+  content: '';
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #0A3A5E;
+  transition: width 0.3s ease;
+}
+
+.navbar.scrolled .nav-links::after {
+  bottom: 20px;
+}
+
+.nav-links:hover::after,
+.nav-links.active::after {
+  width: 100%;
+}
+
+.nav-links:hover,
+.nav-links.active {
+  color: #0A3A5E;
+}
+
+.contact-item {
+  margin-left: 15px;
+}
+
+.nav-links-btn {
+  background-color: #0A3A5E;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border: 2px solid #0A3A5E;
+}
+
+.nav-links-btn:hover {
+  background-color: transparent;
+  color: #0A3A5E;
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: #fff;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburger span:nth-child(2) {
+  top: 9px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 18px;
+}
+
+.hamburger.active span:nth-child(1) {
+  top: 9px;
+  transform: rotate(135deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.hamburger.active span:nth-child(3) {
+  top: 9px;
+  transform: rotate(-135deg);
+}
+
+@media screen and (max-width: 960px) {
+  .navbar-container {
+    padding: 0 20px;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 70px;
+    left: -100%;
+    opacity: 0;
+    transition: all 0.5s ease;
+    background-color: rgba(0, 0, 0, 0.95);
+    padding-top: 30px;
+  }
+
+  .nav-menu.active {
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+  .nav-item {
+    height: 60px;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-links {
+    text-align: center;
+    padding: 1.5rem;
+    width: 80%;
+    display: table;
+    font-size: 1.2rem;
+  }
+
+  .nav-links::after {
+    bottom: 15px;
+  }
+
+  .contact-item {
+    margin: 20px 0 0 0;
+  }
+
+  .nav-links-btn {
+    width: 200px;
+    padding: 15px 20px;
+    text-align: center;
+  }
+
+  .menu-icon {
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+
+  .company-name {
+    font-size: 1.5rem;
+  }
+
+  .company-tagline {
+    font-size: 0.6rem;
+  }
+
+  .logo-icon {
+    font-size: 1.8rem;
+  }
+}

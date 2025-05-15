@@ -1,107 +1,337 @@
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import ContactForm from '../components/ContactForm';
 import '../styles/Contact.css';
 
 const Contact = () => {
+  const [expandedFaq, setExpandedFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setExpandedFaq(expandedFaq === index ? null : index);
+  };
+
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  // FAQ data
+  const faqItems = [
+    {
+      question: "What areas do you serve?",
+      answer: "We primarily serve the Building City metropolitan area and surrounding communities within a 50-mile radius."
+    },
+    {
+      question: "Do you offer free estimates?",
+      answer: "Yes, we provide free initial consultations and estimates for all potential projects."
+    },
+    {
+      question: "Are you licensed and insured?",
+      answer: "Absolutely. COBRIXA Construction is fully licensed, bonded, and insured for all types of construction work we perform."
+    },
+    {
+      question: "How long does a typical construction project take?",
+      answer: "Project timelines vary greatly depending on scope and complexity. A small renovation might take a few weeks, while a custom home could take 6-12 months. We provide detailed timelines during the planning phase."
+    },
+    {
+      question: "What types of projects do you handle?",
+      answer: "We handle a wide range of construction projects including residential homes, commercial buildings, renovations, additions, and specialized construction services. Our team has expertise in both new construction and remodeling projects."
+    }
+  ];
+
   return (
     <div className="contact-page">
-      <div className="page-header">
+      {/* Animated Header Section */}
+      <motion.div
+        className="page-header"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div className="container">
-          <h1>Contact Us</h1>
-          <p>Get in touch with our team to discuss your construction needs.</p>
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Contact Us
+          </motion.h1>
+          <motion.div
+            className="accent-line"
+            initial={{ width: 0 }}
+            animate={{ width: 100 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          ></motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            Get in touch with our team to discuss your construction needs
+          </motion.p>
         </div>
-      </div>
-      
-      <section className="contact-info-section">
+      </motion.div>
+
+      {/* Contact Info and Form Section */}
+      <motion.section
+        className="contact-info-section"
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+      >
         <div className="container">
           <div className="contact-grid">
-            <div className="contact-info">
+            <motion.div
+              className="contact-info"
+              variants={fadeIn}
+            >
               <h2>Our Contact Information</h2>
-              
-              <div className="info-item">
+              <div className="accent-line"></div>
+
+              <motion.div
+                className="info-item"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.3 }}
+              >
                 <div className="info-icon">
-                  <i className="fas fa-map-marker-alt"></i>
+                  <motion.i
+                    className="fas fa-map-marker-alt"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                  ></motion.i>
                 </div>
                 <div className="info-content">
                   <h3>Office Location</h3>
                   <p>123 Construction Way<br />Building City, BC 12345</p>
                 </div>
-              </div>
-              
-              <div className="info-item">
+              </motion.div>
+
+              <motion.div
+                className="info-item"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.3 }}
+              >
                 <div className="info-icon">
-                  <i className="fas fa-phone"></i>
+                  <motion.i
+                    className="fas fa-phone"
+                    animate={{ rotate: [0, 15, -15, 0] }}
+                    transition={{ duration: 1, repeat: Infinity, repeatDelay: 4 }}
+                  ></motion.i>
                 </div>
                 <div className="info-content">
                   <h3>Phone</h3>
                   <p>(555) 123-4567</p>
                 </div>
-              </div>
-              
-              <div className="info-item">
+              </motion.div>
+
+              <motion.div
+                className="info-item"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.3 }}
+              >
                 <div className="info-icon">
-                  <i className="fas fa-envelope"></i>
+                  <motion.i
+                    className="fas fa-envelope"
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 3.5 }}
+                  ></motion.i>
                 </div>
                 <div className="info-content">
                   <h3>Email</h3>
-                  <p>info@buildmaster.com</p>
+                  <p>info@cobrixa.com</p>
                 </div>
-              </div>
-              
-              <div className="info-item">
+              </motion.div>
+
+              <motion.div
+                className="info-item"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.3 }}
+              >
                 <div className="info-icon">
-                  <i className="fas fa-clock"></i>
+                  <motion.i
+                    className="fas fa-clock"
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                  ></motion.i>
                 </div>
                 <div className="info-content">
                   <h3>Working Hours</h3>
                   <p>Monday - Friday: 8:00 AM - 5:00 PM<br />Saturday: 9:00 AM - 2:00 PM<br />Sunday: Closed</p>
                 </div>
-              </div>
-            </div>
-            
-            <div className="contact-form-section">
+              </motion.div>
+
+              <motion.div
+                className="social-media"
+                variants={fadeIn}
+              >
+                <h3>Connect With Us</h3>
+                <div className="social-icons">
+                  <motion.a
+                    href="#"
+                    whileHover={{ y: -5, scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <i className="fab fa-facebook-f"></i>
+                  </motion.a>
+                  <motion.a
+                    href="#"
+                    whileHover={{ y: -5, scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <i className="fab fa-twitter"></i>
+                  </motion.a>
+                  <motion.a
+                    href="#"
+                    whileHover={{ y: -5, scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <i className="fab fa-instagram"></i>
+                  </motion.a>
+                  <motion.a
+                    href="#"
+                    whileHover={{ y: -5, scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <i className="fab fa-linkedin-in"></i>
+                  </motion.a>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              className="contact-form-section"
+              variants={fadeIn}
+            >
               <ContactForm />
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
-      
-      <section className="map-section">
+      </motion.section>
+
+      {/* Map Section */}
+      <motion.section
+        className="map-section"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeIn}
+      >
         <div className="container">
-          <h2>Find Us</h2>
-          <div className="map-container">
+          <motion.h2
+            variants={fadeIn}
+          >
+            Find Us
+          </motion.h2>
+          <motion.div
+            className="accent-line"
+            initial={{ width: 0 }}
+            whileInView={{ width: 100 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          ></motion.div>
+
+          <motion.div
+            className="map-container"
+            variants={fadeIn}
+            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.3 }}
+          >
             {/* In a real application, you would embed a Google Map or other map service here */}
             <div className="map-placeholder">
-              <p>Map Placeholder - In a real application, an interactive map would be displayed here.</p>
+              <div className="map-overlay">
+                <div className="map-pin">
+                  <motion.i
+                    className="fas fa-map-marker-alt"
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  ></motion.i>
+                </div>
+                <h3>COBRIXA Construction</h3>
+                <p>123 Construction Way, Building City</p>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
-      
-      <section className="faq-section">
+      </motion.section>
+
+      {/* FAQ Section with Accordion */}
+      <motion.section
+        className="faq-section"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={staggerContainer}
+      >
         <div className="container">
-          <h2>Frequently Asked Questions</h2>
-          
-          <div className="faq-item">
-            <h3>What areas do you serve?</h3>
-            <p>We primarily serve the Building City metropolitan area and surrounding communities within a 50-mile radius.</p>
-          </div>
-          
-          <div className="faq-item">
-            <h3>Do you offer free estimates?</h3>
-            <p>Yes, we provide free initial consultations and estimates for all potential projects.</p>
-          </div>
-          
-          <div className="faq-item">
-            <h3>Are you licensed and insured?</h3>
-            <p>Absolutely. BuildMaster Construction is fully licensed, bonded, and insured for all types of construction work we perform.</p>
-          </div>
-          
-          <div className="faq-item">
-            <h3>How long does a typical construction project take?</h3>
-            <p>Project timelines vary greatly depending on scope and complexity. A small renovation might take a few weeks, while a custom home could take 6-12 months. We provide detailed timelines during the planning phase.</p>
-          </div>
+          <motion.h2 variants={fadeIn}>Frequently Asked Questions</motion.h2>
+          <motion.div
+            className="accent-line"
+            initial={{ width: 0 }}
+            whileInView={{ width: 100 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          ></motion.div>
+
+          <motion.div
+            className="faq-container"
+            variants={fadeIn}
+          >
+            {faqItems.map((faq, index) => (
+              <motion.div
+                key={index}
+                className={`faq-item ${expandedFaq === index ? 'active' : ''}`}
+                variants={fadeIn}
+                custom={index}
+                whileHover={{ scale: expandedFaq === index ? 1 : 1.01 }}
+              >
+                <div
+                  className="faq-question"
+                  onClick={() => toggleFaq(index)}
+                >
+                  <h3>{faq.question}</h3>
+                  <motion.div
+                    className="faq-icon"
+                    animate={{ rotate: expandedFaq === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <i className="fas fa-chevron-down"></i>
+                  </motion.div>
+                </div>
+
+                <AnimatePresence>
+                  {expandedFaq === index && (
+                    <motion.div
+                      className="faq-answer"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <p>{faq.answer}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };

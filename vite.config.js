@@ -11,6 +11,9 @@ export default defineConfig({
     }
   },
   css: {
-    postcss: './postcss.config.js'
+    postcss: false
+  },
+  optimizeDeps: {
+    include: ['cookie', 'react-router-dom']
   }
 })

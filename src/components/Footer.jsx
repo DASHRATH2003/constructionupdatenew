@@ -68,7 +68,7 @@ const Footer = () => {
             <div className="footer-section">
               <h3>About Us</h3>
               <div className="footer-divider"></div>
-              <p>COBRIXA Construction is a premier luxury construction firm specializing in high-end residential, commercial, and industrial projects. With our commitment to excellence and attention to detail, we transform visions into reality.</p>
+              <p>COBRIXA Construction is a premier luxury construction firm specializing in high-end residential and commercial projects.</p>
               <Link
                 to="/about"
                 className="footer-more-link"
@@ -160,15 +160,7 @@ const Footer = () => {
                   </div>
                 </div>
 
-                <div className="contact-item">
-                  <div className="contact-icon">
-                    <i className="fas fa-clock"></i>
-                  </div>
-                  <div className="contact-text">
-                    <p>Mon-Fri: 8:00 AM - 6:00 PM</p>
-                    <p>Sat: 9:00 AM - 2:00 PM</p>
-                  </div>
-                </div>
+               
               </div>
             </div>
           </div>
@@ -186,7 +178,6 @@ const Footer = () => {
 };
 
 export default Footer;
-
 
 
 

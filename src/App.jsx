@@ -4,11 +4,12 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Projects from './pages/Projects';
-import Testimonials from './pages/Testimonials';
+import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 
 import './App.css';
@@ -23,10 +24,24 @@ function App() {
       offset: 100,
       easing: 'ease-in-out'
     });
+
+    // Add event listener to refresh AOS when the route changes
+    const handleRouteChange = () => {
+      setTimeout(() => {
+        AOS.refresh();
+      }, 100);
+    };
+
+    window.addEventListener('popstate', handleRouteChange);
+
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+    };
   }, []);
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="app">
         <Navbar />
         <main className="main-content">
@@ -35,7 +50,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/testimonials" element={<Testimonials />} />
+            <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

@@ -86,23 +86,102 @@ const Navbar = () => {
         </div>
 
         <ul className={isOpen ? 'nav-menu active' : 'nav-menu'}>
-          {["/", "/about", "/services", "/projects", "/testimonials"].map((path, i) => (
-            <motion.li
-              className="nav-item"
-              key={path}
-              custom={i}
-              variants={navItemVariants}
-              initial="hidden"
-              animate="visible"
+          {/* Home link */}
+          <motion.li
+            className="nav-item"
+            key="/"
+            custom={0}
+            variants={navItemVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <Link
+              to="/"
+              className={location.pathname === "/" ? "nav-links active" : "nav-links"}
             >
-              <Link
-                to={path}
-                className={location.pathname === path ? "nav-links active" : "nav-links"}
-              >
-                {path === "/" ? "Home" : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
-              </Link>
-            </motion.li>
-          ))}
+              Home
+            </Link>
+          </motion.li>
+
+          {/* About link - shows About page then redirects to home */}
+          <motion.li
+            className="nav-item"
+            key="/about"
+            custom={1}
+            variants={navItemVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <Link
+              to="/about"
+              className={location.pathname === "/about" ? "nav-links active" : "nav-links"}
+            >
+              About
+            </Link>
+          </motion.li>
+
+          {/* Services link with dropdown */}
+          <motion.li
+            className="nav-item dropdown"
+            key="/services"
+            custom={2}
+            variants={navItemVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <Link
+              to="/services"
+              className={location.pathname === "/services" ? "nav-links active" : "nav-links"}
+            >
+              Services <i className="fas fa-chevron-down dropdown-icon"></i>
+            </Link>
+            <ul className="dropdown-menu">
+              <li>
+                <Link to="/services#residential" className="dropdown-link">
+                  Residential
+                </Link>
+              </li>
+              <li>
+                <Link to="/services#commercial" className="dropdown-link">
+                  Commercial
+                </Link>
+              </li>
+            </ul>
+          </motion.li>
+
+          {/* Projects link - shows Projects page then redirects to home */}
+          <motion.li
+            className="nav-item"
+            key="/projects"
+            custom={3}
+            variants={navItemVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <Link
+              to="/projects"
+              className={location.pathname === "/projects" ? "nav-links active" : "nav-links"}
+            >
+              Projects
+            </Link>
+          </motion.li>
+
+          {/* Gallery link */}
+          <motion.li
+            className="nav-item"
+            key="/gallery"
+            custom={4}
+            variants={navItemVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <Link
+              to="/gallery"
+              className={location.pathname === "/gallery" ? "nav-links active" : "nav-links"}
+            >
+              Gallery
+            </Link>
+          </motion.li>
 
           <motion.li
             className="nav-item contact-item"

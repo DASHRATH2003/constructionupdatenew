@@ -12,10 +12,10 @@ const Footer = () => {
           <div className="footer-logo-section">
             <Link to="/" className="footer-logo">
               <div className="logo-container">
-               
+
                 <div className="logo-text">
                   <span className="company-name">COBRIXA</span>
-                  
+
                 </div>
               </div>
             </Link>
@@ -68,19 +68,44 @@ const Footer = () => {
             <div className="footer-section">
               <h3>About Us</h3>
               <div className="footer-divider"></div>
-              <p>BuildMaster Construction is a premier luxury construction firm specializing in high-end residential, commercial, and industrial projects. With our commitment to excellence and attention to detail, we transform visions into reality.</p>
-              <Link to="/about" className="footer-more-link">Learn More <i className="fas fa-arrow-right"></i></Link>
+              <p>COBRIXA Construction is a premier luxury construction firm specializing in high-end residential, commercial, and industrial projects. With our commitment to excellence and attention to detail, we transform visions into reality.</p>
+              <Link
+                to="/about"
+                className="footer-more-link"
+              >
+                Learn More <i className="fas fa-arrow-right"></i>
+              </Link>
             </div>
 
             <div className="footer-section">
               <h3>Our Services</h3>
               <div className="footer-divider"></div>
               <ul className="footer-links">
-                <li><Link to="/services#residential"><i className="fas fa-angle-right"></i> Residential Construction</Link></li>
-                <li><Link to="/services#commercial"><i className="fas fa-angle-right"></i> Commercial Construction</Link></li>
-                <li><Link to="/services#renovations"><i className="fas fa-angle-right"></i> Interior Renovations</Link></li>
-                <li><Link to="/services#architecture"><i className="fas fa-angle-right"></i> Architecture & Planning</Link></li>
-                <li><Link to="/services#project-management"><i className="fas fa-angle-right"></i> Project Management</Link></li>
+                <li>
+                  <Link to="/services#residential">
+                    <i className="fas fa-angle-right"></i> Residential Construction
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services#commercial">
+                    <i className="fas fa-angle-right"></i> Commercial Construction
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services#renovations">
+                    <i className="fas fa-angle-right"></i> Interior Renovations
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services#architecture">
+                    <i className="fas fa-angle-right"></i> Architecture & Planning
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/services#project-management">
+                    <i className="fas fa-angle-right"></i> Project Management
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -89,9 +114,17 @@ const Footer = () => {
               <div className="footer-divider"></div>
               <ul className="footer-links">
                 <li><Link to="/"><i className="fas fa-angle-right"></i> Home</Link></li>
-                <li><Link to="/about"><i className="fas fa-angle-right"></i> About Us</Link></li>
-                <li><Link to="/projects"><i className="fas fa-angle-right"></i> Projects</Link></li>
-                <li><Link to="/testimonials"><i className="fas fa-angle-right"></i> Testimonials</Link></li>
+                <li>
+                  <Link to="/about">
+                    <i className="fas fa-angle-right"></i> About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/projects">
+                    <i className="fas fa-angle-right"></i> Projects
+                  </Link>
+                </li>
+                <li><Link to="/gallery"><i className="fas fa-angle-right"></i> Gallery</Link></li>
                 <li><Link to="/contact"><i className="fas fa-angle-right"></i> Contact</Link></li>
               </ul>
             </div>
@@ -123,7 +156,7 @@ const Footer = () => {
                     <i className="fas fa-envelope"></i>
                   </div>
                   <div className="contact-text">
-                    <p>info@buildmaster.com</p>
+                    <p>info@cobrixa.com</p>
                   </div>
                 </div>
 
@@ -144,7 +177,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <div className="container">
-          <p>&copy; {currentYear} BuildMaster Construction. All Rights Reserved.</p>
+          <p>&copy; {currentYear} COBRIXA Construction. All Rights Reserved.</p>
           <p>Designed with <i className="fas fa-heart"></i> for luxury construction</p>
         </div>
       </div>

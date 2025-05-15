@@ -4,8 +4,17 @@ import { useEffect, useState, useRef } from 'react';
 // import Logo from './Logo';
 
 const Hero = () => {
-  // Background image for hero section
-  const backgroundImage = "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+  // Background images for hero section slideshow
+  const backgroundImages = [
+    "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=2070&auto=format&fit=crop"
+  ];
+
+  // State to track current image index
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Modern, sophisticated color theme for the hero section
   const colorTheme = {
@@ -30,6 +39,17 @@ const Hero = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Image slideshow effect - change image every 5 seconds with slow transition
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === backgroundImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [backgroundImages.length]);
 
   // Animation variants for expanded content
   const expandedContentVariants = {
@@ -85,19 +105,26 @@ const Hero = () => {
         transition={{ duration: 1.5 }}
         style={{ zIndex: 1 }}
       >
-        {/* Background Image with Parallax */}
-        <motion.div
-          className="absolute inset-0"
-          style={{ y: scrollY * 0.2, zIndex: 5 }}
-        >
-          <div
-            className="w-full h-full bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${backgroundImage})`,
-              transform: 'scale(1.05)'
-            }}
-          />
-        </motion.div>
+        {/* Background Image Slideshow with Parallax */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentImageIndex}
+            className="absolute inset-0"
+            style={{ y: scrollY * 0.2, zIndex: 5 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 2.5, ease: "easeInOut" }}
+          >
+            <div
+              className="w-full h-full bg-cover bg-center"
+              style={{
+                backgroundImage: `url(${backgroundImages[currentImageIndex]})`,
+                transform: 'scale(1.05)'
+              }}
+            />
+          </motion.div>
+        </AnimatePresence>
 
         {/* Subtle Gradient Overlay */}
         <motion.div

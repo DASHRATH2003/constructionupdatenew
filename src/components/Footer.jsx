@@ -12,10 +12,10 @@ const Footer = () => {
           <div className="footer-logo-section">
             <Link to="/" className="footer-logo">
               <div className="logo-container">
-                <i className="fas fa-building logo-icon"></i>
+               
                 <div className="logo-text">
-                  <span className="company-name">BuildMaster</span>
-                  <span className="company-tagline">LUXURY CONSTRUCTION</span>
+                  <span className="company-name">COBRIXA</span>
+                  
                 </div>
               </div>
             </Link>
@@ -153,3 +153,7 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
+
+

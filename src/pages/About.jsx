@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-// import { motion } from 'framer-motion';
-import { useEffect, useRef ,setScrollY} from 'react';
+import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 import '../styles/About.css';
+
 
 // Premium color theme for the about page
 const colorTheme = {
@@ -61,7 +62,8 @@ const slideFromRight = {
 };
 
 const About = () => {
-  // Remove the unused state variable
+  // State for scroll position
+  const [scrollY, setScrollY] = useState(0);
   const aboutRef = useRef(null);
 
   // Handle scroll for parallax effects

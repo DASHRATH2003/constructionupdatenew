@@ -82,13 +82,13 @@ const Footer = () => {
               <div className="footer-divider"></div>
               <ul className="footer-links">
                 <li>
-                  <Link to="/services#residential">
-                    <i className="fas fa-angle-right"></i> Residential Construction
+                  <Link to="/construction">
+                    <i className="fas fa-angle-right"></i> Construction
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services#commercial">
-                    <i className="fas fa-angle-right"></i> Commercial Construction
+                  <Link to="/interior-design">
+                    <i className="fas fa-angle-right"></i> Interior Design
                   </Link>
                 </li>
                 <li>
@@ -160,7 +160,7 @@ const Footer = () => {
                   </div>
                 </div>
 
-               
+
               </div>
             </div>
           </div>

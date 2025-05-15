@@ -62,8 +62,8 @@ const Services = () => {
   const processRef = useRef(null);
   const servicesListRef = useRef(null);
   const ctaRef = useRef(null);
-  const residentialRef = useRef(null);
-  const commercialRef = useRef(null);
+  const constructionRef = useRef(null);
+  const interiorDesignRef = useRef(null);
 
   // Animation controls
   const introControls = useAnimation();
@@ -83,7 +83,7 @@ const Services = () => {
   useEffect(() => {
     if (location.hash) {
       const serviceId = location.hash.replace('#', '');
-      if (serviceId === 'residential' || serviceId === 'commercial') {
+      if (serviceId === 'construction' || serviceId === 'interior-design') {
         setExpandedService(serviceId);
         // Scroll to the service section
         setTimeout(() => {
@@ -126,29 +126,29 @@ const Services = () => {
   ];
   const services = [
     {
-      id: 'residential',
-      title: 'Residential Construction',
-      description: 'We specialize in building custom homes that reflect your unique style and meet your specific needs. From initial design to final touches, our team works closely with you to create the home of your dreams.',
+      id: 'construction',
+      title: 'Construction',
+      description: 'We specialize in building custom structures that reflect your unique style and meet your specific needs. From initial design to final touches, our team works closely with you to create the building of your dreams.',
       image: 'https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?q=80&w=1000&auto=format&fit=crop',
       features: [
-        'Custom home building',
-        'Home additions and extensions',
-        'Kitchen and bathroom remodeling',
-        'Basement finishing',
-        'Outdoor living spaces'
+        'Custom building construction',
+        'Building additions and extensions',
+        'Structural renovations',
+        'Foundation and framework',
+        'Exterior and interior construction'
       ]
     },
     {
-      id: 'commercial',
-      title: 'Commercial Construction',
-      description: 'Our commercial construction services cater to businesses of all sizes. We understand the importance of functional, attractive spaces that enhance productivity and make a positive impression on clients and customers.',
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop',
+      id: 'interior-design',
+      title: 'Interior Design',
+      description: 'Our interior design services transform spaces into beautiful, functional environments. We understand the importance of creating attractive spaces that reflect your style and enhance your quality of life.',
+      image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1000&auto=format&fit=crop',
       features: [
-        'Office buildings',
-        'Retail spaces',
-        'Restaurants',
-        'Medical facilities',
-        'Warehouses and industrial buildings'
+        'Space planning and layout',
+        'Color and material selection',
+        'Custom furniture design',
+        'Lighting design',
+        'Decorative elements and accessories'
       ]
     },
     {
@@ -351,7 +351,7 @@ const Services = () => {
               className="service-item"
               variants={fadeIn}
               custom={index}
-              ref={service.id === 'residential' ? residentialRef : service.id === 'commercial' ? commercialRef : null}
+              ref={service.id === 'construction' ? constructionRef : service.id === 'interior-design' ? interiorDesignRef : null}
             >
               <div className="service-content">
                 <motion.div
@@ -379,8 +379,8 @@ const Services = () => {
                     ))}
                   </motion.ul>
 
-                  {/* Show More Details Button for Residential and Commercial */}
-                  {(service.id === 'residential' || service.id === 'commercial') && (
+                  {/* Show More Details Button for Construction and Interior Design */}
+                  {(service.id === 'construction' || service.id === 'interior-design') && (
                     <motion.div
                       className="service-actions"
                       whileHover={{ scale: 1.05 }}
@@ -433,10 +433,10 @@ const Services = () => {
                 </motion.div>
               </div>
 
-              {/* Expanded Content for Residential */}
-              {service.id === 'residential' && (
+              {/* Expanded Content for Construction */}
+              {service.id === 'construction' && (
                 <AnimatePresence>
-                  {expandedService === 'residential' && (
+                  {expandedService === 'construction' && (
                     <motion.div
                       className="expanded-service-content"
                       initial={{ opacity: 0, height: 0 }}
@@ -445,49 +445,49 @@ const Services = () => {
                       transition={{ duration: 0.5 }}
                     >
                       <div className="expanded-service-inner">
-                        <h3>Our Residential Construction Expertise</h3>
-                        <p>At COBRIXA Construction, we understand that your home is more than just a building—it's where life happens. Our residential construction services are designed to create spaces that reflect your unique lifestyle and preferences while providing exceptional quality and value.</p>
+                        <h3>Our Construction Expertise</h3>
+                        <p>At COBRIXA, we understand that your building is more than just a structure—it's where life and business happen. Our construction services are designed to create spaces that reflect your unique requirements and preferences while providing exceptional quality and value.</p>
 
                         <div className="expanded-service-grid">
                           <div className="expanded-service-item">
-                            <h4>Custom Home Building</h4>
-                            <p>From concept to completion, we work closely with you to design and build a home that perfectly suits your needs, preferences, and budget. Our team of architects, designers, and craftsmen collaborate to create a custom home that exceeds your expectations.</p>
+                            <h4>Custom Building Construction</h4>
+                            <p>From concept to completion, we work closely with you to design and build structures that perfectly suit your needs, preferences, and budget. Our team of architects, engineers, and craftsmen collaborate to create custom buildings that exceed your expectations.</p>
                             <ul>
                               <li>Architectural design and planning</li>
                               <li>Site preparation and foundation work</li>
                               <li>Structural framing and exterior finishing</li>
                               <li>Interior finishing and custom details</li>
-                              <li>Landscaping and outdoor living spaces</li>
+                              <li>Landscaping and outdoor spaces</li>
                             </ul>
                           </div>
 
                           <div className="expanded-service-item">
-                            <h4>Home Renovations</h4>
-                            <p>Transform your existing home with our comprehensive renovation services. Whether you're looking to update a single room or completely reimagine your living space, our team has the expertise to bring your vision to life.</p>
+                            <h4>Building Renovations</h4>
+                            <p>Transform your existing structure with our comprehensive renovation services. Whether you're looking to update a single area or completely reimagine your space, our team has the expertise to bring your vision to life.</p>
                             <ul>
-                              <li>Kitchen and bathroom remodeling</li>
-                              <li>Basement finishing and conversions</li>
-                              <li>Room additions and extensions</li>
-                              <li>Whole-house renovations</li>
-                              <li>Historic home restorations</li>
+                              <li>Structural modifications</li>
+                              <li>Space conversions and repurposing</li>
+                              <li>Building additions and extensions</li>
+                              <li>Complete building renovations</li>
+                              <li>Historic building restorations</li>
                             </ul>
                           </div>
 
                           <div className="expanded-service-item">
-                            <h4>Luxury Features</h4>
-                            <p>Elevate your home with premium features and finishes that add both beauty and functionality. Our attention to detail ensures that every element of your home reflects the highest standards of quality and craftsmanship.</p>
+                            <h4>Premium Features</h4>
+                            <p>Elevate your building with premium features and finishes that add both beauty and functionality. Our attention to detail ensures that every element reflects the highest standards of quality and craftsmanship.</p>
                             <ul>
-                              <li>Custom cabinetry and millwork</li>
-                              <li>Smart home technology integration</li>
-                              <li>Energy-efficient systems and appliances</li>
-                              <li>Luxury finishes and materials</li>
-                              <li>Indoor-outdoor living spaces</li>
+                              <li>Custom architectural elements</li>
+                              <li>Smart building technology integration</li>
+                              <li>Energy-efficient systems</li>
+                              <li>Premium materials and finishes</li>
+                              <li>Indoor-outdoor integrated spaces</li>
                             </ul>
                           </div>
 
                           <div className="expanded-service-item">
-                            <h4>Our Residential Process</h4>
-                            <p>We follow a structured approach to ensure your residential project is completed to the highest standards of quality and efficiency, with clear communication at every stage.</p>
+                            <h4>Our Construction Process</h4>
+                            <p>We follow a structured approach to ensure your construction project is completed to the highest standards of quality and efficiency, with clear communication at every stage.</p>
                             <ol>
                               <li><strong>Initial Consultation:</strong> We discuss your vision, requirements, and budget</li>
                               <li><strong>Design Development:</strong> Our team creates detailed plans and specifications</li>
@@ -501,7 +501,7 @@ const Services = () => {
 
                         <div className="expanded-service-cta">
                           <Link to="/contact" className="btn btn-primary">
-                            Schedule a Residential Consultation
+                            Schedule a Construction Consultation
                             <i className="fas fa-arrow-right ml-2"></i>
                           </Link>
                         </div>
@@ -511,10 +511,10 @@ const Services = () => {
                 </AnimatePresence>
               )}
 
-              {/* Expanded Content for Commercial */}
-              {service.id === 'commercial' && (
+              {/* Expanded Content for Interior Design */}
+              {service.id === 'interior-design' && (
                 <AnimatePresence>
-                  {expandedService === 'commercial' && (
+                  {expandedService === 'interior-design' && (
                     <motion.div
                       className="expanded-service-content"
                       initial={{ opacity: 0, height: 0 }}
@@ -523,62 +523,62 @@ const Services = () => {
                       transition={{ duration: 0.5 }}
                     >
                       <div className="expanded-service-inner">
-                        <h3>Our Commercial Construction Expertise</h3>
-                        <p>COBRIXA Construction delivers exceptional commercial building solutions that combine functionality, aesthetics, and value. We understand that your commercial space is a critical asset for your business, and we work diligently to create environments that enhance productivity, impress clients, and stand the test of time.</p>
+                        <h3>Our Interior Design Expertise</h3>
+                        <p>COBRIXA delivers exceptional interior design solutions that combine functionality, aesthetics, and personal expression. We understand that your interior space reflects your personality and lifestyle, and we work diligently to create environments that inspire, comfort, and impress.</p>
 
                         <div className="expanded-service-grid">
                           <div className="expanded-service-item">
-                            <h4>Office Buildings</h4>
-                            <p>Create a workspace that reflects your company's culture and supports your team's productivity. Our office construction services encompass everything from modern open-concept designs to traditional executive suites.</p>
+                            <h4>Residential Interior Design</h4>
+                            <p>Create a home that reflects your personal style and enhances your daily life. Our residential interior design services encompass everything from single-room makeovers to complete home transformations.</p>
                             <ul>
-                              <li>New office construction</li>
-                              <li>Office renovations and remodels</li>
-                              <li>Tenant improvements</li>
-                              <li>Collaborative workspaces</li>
-                              <li>Executive suites and boardrooms</li>
+                              <li>Living and dining spaces</li>
+                              <li>Kitchen and bathroom design</li>
+                              <li>Bedroom and private spaces</li>
+                              <li>Home offices and specialty rooms</li>
+                              <li>Multi-room design cohesion</li>
                             </ul>
                           </div>
 
                           <div className="expanded-service-item">
-                            <h4>Retail and Restaurant Spaces</h4>
-                            <p>Develop commercial spaces that attract customers and enhance their experience. We specialize in creating retail and restaurant environments that are both functional for your operations and appealing to your clientele.</p>
+                            <h4>Commercial Interior Design</h4>
+                            <p>Develop commercial interiors that enhance your brand and improve functionality. We specialize in creating spaces that work for your business while making a lasting impression on clients and employees.</p>
                             <ul>
-                              <li>Retail storefronts and shopping centers</li>
-                              <li>Restaurant and food service facilities</li>
-                              <li>Hospitality venues</li>
-                              <li>Mixed-use developments</li>
-                              <li>Entertainment facilities</li>
+                              <li>Office and workspace design</li>
+                              <li>Retail and hospitality interiors</li>
+                              <li>Corporate branding integration</li>
+                              <li>Space planning and optimization</li>
+                              <li>Commercial furniture selection</li>
                             </ul>
                           </div>
 
                           <div className="expanded-service-item">
-                            <h4>Industrial and Institutional</h4>
-                            <p>Build facilities that meet the specific requirements of your industry or institution. Our team has extensive experience with complex projects that demand specialized knowledge and attention to detail.</p>
+                            <h4>Custom Design Elements</h4>
+                            <p>Elevate your space with custom-designed elements that are uniquely yours. Our team creates bespoke features that add character and functionality to your interior.</p>
                             <ul>
-                              <li>Manufacturing facilities</li>
-                              <li>Warehouses and distribution centers</li>
-                              <li>Medical and healthcare facilities</li>
-                              <li>Educational institutions</li>
-                              <li>Government buildings</li>
+                              <li>Custom furniture design</li>
+                              <li>Built-in cabinetry and shelving</li>
+                              <li>Specialty lighting solutions</li>
+                              <li>Custom wall treatments</li>
+                              <li>Art and accessory curation</li>
                             </ul>
                           </div>
 
                           <div className="expanded-service-item">
-                            <h4>Commercial Advantages</h4>
-                            <p>When you choose COBRIXA for your commercial construction project, you benefit from our comprehensive approach and commitment to excellence.</p>
+                            <h4>Interior Design Process</h4>
+                            <p>When you choose COBRIXA for your interior design project, you benefit from our comprehensive approach and commitment to excellence.</p>
                             <ul>
-                              <li><strong>Efficiency:</strong> Streamlined processes to minimize disruption to your business</li>
-                              <li><strong>Expertise:</strong> Specialized knowledge of commercial building codes and regulations</li>
-                              <li><strong>Quality:</strong> Premium materials and craftsmanship for lasting value</li>
-                              <li><strong>Innovation:</strong> Integration of the latest building technologies and sustainable practices</li>
-                              <li><strong>Partnership:</strong> Collaborative approach that prioritizes your business objectives</li>
+                              <li><strong>Consultation:</strong> Understanding your style, needs, and vision</li>
+                              <li><strong>Concept Development:</strong> Creating design concepts and mood boards</li>
+                              <li><strong>Space Planning:</strong> Optimizing layout and functionality</li>
+                              <li><strong>Material Selection:</strong> Choosing finishes, fabrics, and materials</li>
+                              <li><strong>Implementation:</strong> Coordinating installation and styling</li>
                             </ul>
                           </div>
                         </div>
 
                         <div className="expanded-service-cta">
                           <Link to="/contact" className="btn btn-primary">
-                            Discuss Your Commercial Project
+                            Schedule an Interior Design Consultation
                             <i className="fas fa-arrow-right ml-2"></i>
                           </Link>
                         </div>

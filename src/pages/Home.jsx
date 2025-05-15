@@ -436,11 +436,11 @@ const Home = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-[#0A3A5E] mb-3">Residential Construction</h3>
-                <p className="text-gray-700 mb-4">Luxury homes and custom residences built with precision craftsmanship and premium materials.</p>
+                <h3 className="text-xl font-bold text-[#0A3A5E] mb-3">Construction</h3>
+                <p className="text-gray-700 mb-4">Luxury homes and custom buildings built with precision craftsmanship and premium materials.</p>
                 <motion.div whileHover={{ x: 5 }}>
-                  <Link to="/services" className="text-[#0A3A5E] font-semibold hover:underline inline-flex items-center">
-                    Explore Residential <i className="fas fa-arrow-right ml-2"></i>
+                  <Link to="/construction" className="text-[#0A3A5E] font-semibold hover:underline inline-flex items-center">
+                    Explore Construction <i className="fas fa-arrow-right ml-2"></i>
                   </Link>
                 </motion.div>
               </div>
@@ -463,11 +463,11 @@ const Home = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-[#0A3A5E] mb-3">Commercial Construction</h3>
-                <p className="text-gray-700 mb-4">State-of-the-art office buildings, retail spaces, and commercial facilities designed for success.</p>
+                <h3 className="text-xl font-bold text-[#0A3A5E] mb-3">Interior Design</h3>
+                <p className="text-gray-700 mb-4">Elegant interior spaces with premium finishes, custom furnishings, and thoughtful design elements.</p>
                 <motion.div whileHover={{ x: 5 }}>
-                  <Link to="/services" className="text-[#0A3A5E] font-semibold hover:underline inline-flex items-center">
-                    Explore Commercial <i className="fas fa-arrow-right ml-2"></i>
+                  <Link to="/interior-design" className="text-[#0A3A5E] font-semibold hover:underline inline-flex items-center">
+                    Explore Interior Design <i className="fas fa-arrow-right ml-2"></i>
                   </Link>
                 </motion.div>
               </div>

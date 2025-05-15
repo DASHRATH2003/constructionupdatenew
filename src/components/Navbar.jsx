@@ -137,13 +137,13 @@ const Navbar = () => {
             </Link>
             <ul className="dropdown-menu">
               <li>
-                <Link to="/services#residential" className="dropdown-link">
-                  Residential
+                <Link to="/construction" className="dropdown-link">
+                  Construction
                 </Link>
               </li>
               <li>
-                <Link to="/services#commercial" className="dropdown-link">
-                  Commercial
+                <Link to="/interior-design" className="dropdown-link">
+                  Interior Design
                 </Link>
               </li>
             </ul>

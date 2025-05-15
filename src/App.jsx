@@ -11,6 +11,8 @@ import Services from './pages/Services';
 import Projects from './pages/Projects';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
+import Construction from './pages/Construction';
+import InteriorDesign from './pages/InteriorDesign';
 
 import './App.css';
 
@@ -49,6 +51,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/construction" element={<Construction />} />
+            <Route path="/interior-design" element={<InteriorDesign />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
